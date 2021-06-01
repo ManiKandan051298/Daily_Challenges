@@ -1,0 +1,21 @@
+select * from city where countrycode='usa' and population>100000;
+select name from city where countrycode='usa' and population>;
+select * from city;
+select * from city where id=1661;
+select * from city where countrycode='JPN';
+select name from city where countrycode='JPN';
+select city,state from station;
+select DISTINCT city from station where id MOD 2=0;
+SELECT (COUNT(CITY) - COUNT(DISTINCT CITY)) FROM STATION
+select * from(select distinct city,length(city) from station order by length(city) asc,city asc) where rownum=1 union select * from(select distinct city,length(city) from station order by length(city) desc,city desc) where rownum=1;
+select DISTINCT city from station where city REGEXP'^[aeiou]'
+select DISTINCT city from station where city REGEXP'[aeiou]$'
+select DISTINCT city from station where city REGEXP '^[aeiou].*[aeiou]$'
+select DISTINCT city from station where lower(substr(city,1,1)) not in ('a','e','i','o','u');
+select DISTINCT city from station where lower(substr(city,length(city),1)) NOT in ('a','e','i','o','u') ;
+select DISTINCT city from station where not (lower(substr(city,1,1))  in ('a','e','i','o','u') and lower(substr(city,length(city),1))  in ('a','e','i','o','u'));
+select DISTINCT city from station where lower(substr(city,1,1)) not in ('a','e','i','o','u') and lower(substr(city,length(city),1)) not in ('a','e','i','o','u');
+select name from employee order by name asc;
+SELECT name FROM Employee WHERE salary > 2000 AND months < 10 ORDER BY employee_id;
+select name from employee order by name asc;
+select name from city where countrycode in (  select code from country where continent='Africa');
